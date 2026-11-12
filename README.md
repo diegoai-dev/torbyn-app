@@ -1,201 +1,201 @@
 # Torbyn
 
-**Escribe el contexto una vez. Todos tus agentes lo reciben.**
+**Write the context once. Every agent gets it.**
 
-[English version](README.en.md) · [Web](https://torbyn-dashboard.vercel.app) · [Descargar para Windows](https://github.com/diegoai-dev/torbyn-releases/releases/latest/download/Torbyn-Setup.exe)
+[Versión en español](README.es.md) · [Website](https://torbyn-dashboard.vercel.app/en) · [Download for Windows](https://github.com/diegoai-dev/torbyn-releases/releases/latest/download/Torbyn-Setup.exe)
 
-![La web de Torbyn](docs/capturas/web-inicio-es.png)
+![The Torbyn website](docs/capturas/web-inicio-en.png)
 
-## Qué es
+## What it is
 
-Torbyn es una app de escritorio para Windows que abre tus agentes de código
-—Claude Code, Codex, Gemini CLI, OpenCode y Droid— en terminales reales,
-todos en una ventana y con el mismo contexto de proyecto. También puedes
-abrir una terminal normal.
+Torbyn is a Windows desktop app that opens your coding agents —Claude Code,
+Codex, Gemini CLI, OpenCode and Droid— in real terminals, all in one window
+and with the same project context. You can also open a plain terminal.
 
-Torbyn no incluye IA. Cada herramienta usa tu propia cuenta o suscripción, e
-inicia sesión por su cuenta en su terminal.
+Torbyn includes no AI. Each tool uses your own account or subscription and
+signs in on its own, in its own terminal.
 
-## Para quién
+## Who it is for
 
-Para quien trabaja con varios agentes de código a la vez sobre un mismo
-proyecto y ya usa esas herramientas con su propia cuenta.
+People who work with several coding agents at once on the same project and
+already use those tools with their own account.
 
-## El problema que resuelve
+## The problem it solves
 
-Con terminales sueltas:
+With separate terminals:
 
-- le explicas el proyecto a cada agente, uno por uno;
-- separar sus carpetas es trabajo tuyo;
-- vigilar lo que toca cada uno, también.
+- you explain the project to each agent, one by one;
+- keeping their folders apart is up to you;
+- so is watching what each one touches.
 
-Y cuando varios agentes trabajan en la misma carpeta, se pisan: dos editan el
-mismo archivo y gana el último que escribe.
+And when several agents work in the same folder, they overwrite each other:
+two of them edit the same file and the last one to write wins.
 
-Con Torbyn:
+With Torbyn:
 
-- escribes el contexto una vez y llega a todos;
-- cada agente puede trabajar en su propia copia del proyecto, en su propia
-  rama;
-- decides qué partes del proyecto puede tocar cada uno;
-- ves qué cambió cada agente, archivo por archivo.
+- you write the context once and it reaches all of them;
+- each agent can work in its own copy of the project, on its own branch;
+- you decide which parts of the project each one can touch;
+- you see what each agent changed, file by file.
 
-## Por qué ahora
+## Why now
 
-Cada vez más personas trabajan con varios agentes de código a la vez sobre el
-mismo proyecto. Esos agentes se pisan, y no hay una capa común que les
-reparta el mismo contexto y les marque hasta dónde puede llegar cada uno.
-Torbyn quiere ser esa capa.
+More and more people work with several coding agents at once on the same
+project. Those agents overwrite each other, and there is no common layer that
+gives them all the same context and marks how far each one can go. Torbyn
+aims to be that layer.
 
-## Cómo funciona
+## How it works
 
 ```mermaid
 flowchart LR
-    P([Tú]) -- "contexto y rutas" --> T["Torbyn<br/>(app de escritorio, en tu equipo)"]
-    T -- "archivo de reglas<br/>de cada herramienta" --> A1["Claude Code"]
+    P([You]) -- "context and paths" --> T["Torbyn<br/>(desktop app, on your computer)"]
+    T -- "each tool's<br/>rules file" --> A1["Claude Code"]
     T -- "AGENTS.md / GEMINI.md" --> A2["Codex · Gemini CLI<br/>OpenCode · Droid"]
-    A1 --> C1[("su carpeta<br/>o su worktree")]
-    A2 --> C2[("su carpeta<br/>o su worktree")]
-    C1 & C2 -- "git, leído en tu equipo" --> V["Cambios por agente"]
+    A1 --> C1[("its folder<br/>or its worktree")]
+    A2 --> C2[("its folder<br/>or its worktree")]
+    C1 & C2 -- "git, read on your computer" --> V["Changes per agent"]
     V --> P
-    A1 & A2 -. "tu cuenta" .-> S["el servicio de<br/>cada herramienta"]
-    T -. "solo tu cuenta de Torbyn" .-> B["servidor de Torbyn"]
-    T -. "actualizaciones firmadas" .-> R["GitHub Releases"]
+    A1 & A2 -. "your account" .-> S["each tool's<br/>own service"]
+    T -. "your Torbyn account only" .-> B["Torbyn server"]
+    T -. "signed updates" .-> R["GitHub Releases"]
 ```
 
-1. **Creas un proyecto.** Puede ser una carpeta nueva o una que ya existe, con
-   git o sin él.
-2. **Escribes el contexto:** de qué va el proyecto y sus reglas. Lo escribes
-   tú; Torbyn no lo resume ni lo cambia.
-3. **Lanzas el equipo.** Eliges qué herramientas y cuántos agentes de cada
-   una. Cada agente elige dónde trabaja:
-   - en la carpeta del proyecto;
-   - en un worktree propio, con su rama;
-   - en una carpeta nueva;
-   - en una carpeta que ya existe.
+1. **You create a project.** It can be a new folder or an existing one, with
+   or without git.
+2. **You write the context:** what the project is about and its rules. You
+   write it; Torbyn doesn't summarise or change it.
+3. **You launch the team.** You pick which tools and how many agents of each.
+   Each agent chooses where it works:
+   - in the project folder;
+   - in its own worktree, on its own branch;
+   - in a new folder;
+   - in an existing folder.
 
-   Con un repositorio que ya tiene commits, el primer agente usa la carpeta
-   del proyecto y los demás un worktree cada uno, para no pisarse.
-4. **Torbyn entrega el contexto** en el archivo de reglas que lee cada
-   herramienta al arrancar:
-   - Claude Code, en su propio archivo;
-   - Codex, OpenCode y Droid, en `AGENTS.md`;
-   - Gemini CLI, en `GEMINI.md`.
+   With a repository that already has commits, the first agent uses the
+   project folder and the rest get a worktree each, so they don't overwrite
+   each other.
+4. **Torbyn delivers the context** in the rules file each tool reads when it
+   starts:
+   - Claude Code, in its own file;
+   - Codex, OpenCode and Droid, in `AGENTS.md`;
+   - Gemini CLI, in `GEMINI.md`.
 
-   Si cambias el contexto, lo entregas a todos con un clic, y cada agente lo
-   lee al reiniciar su sesión. Con Claude Code se midió que usa el contexto
-   entregado; con las demás está entregado, sin medir, y la app lo dice así.
-5. **Asignas rutas.** Por ejemplo, `pagos/` solo para el agente de pagos.
-   - Con Claude Code, Torbyn impide que un agente edite o cree archivos en una
-     ruta de otro. Para eso hace falta Git para Windows.
-   - Con las demás herramientas, la ruta les llega como instrucción, y Torbyn
-     te avisa si se salen. Para avisarte, cada agente tiene que trabajar en su
-     propia carpeta con git.
-6. **Revisas los cambios** de cada agente, archivo por archivo. Juntar el
-   trabajo de varios agentes lo haces tú, con git.
+   If you change the context, you deliver it to all of them with one click,
+   and each agent reads it when its session restarts. With Claude Code it was
+   measured that it uses the delivered context; with the others it is
+   delivered but not measured, and the app says so.
+5. **You assign paths.** For example, `pagos/` only for the payments agent.
+   - With Claude Code, Torbyn stops an agent from editing or creating files
+     in another agent's path. This needs Git for Windows.
+   - With the other tools, the path reaches them as an instruction, and
+     Torbyn warns you if they step out. To warn you, each agent has to work
+     in its own folder with git.
+6. **You review the changes** of each agent, file by file. Putting several
+   agents' work together is up to you, with git.
 
-Además, Torbyn enseña cuánto te queda de tu cuota de Claude Code: la de cinco
-horas y la semanal.
+Torbyn also shows how much of your Claude Code quota you have left: the
+five-hour one and the weekly one.
 
-### Capturas
+### Screenshots
 
-Capturas de la web pública. La demo usa sus propios datos de ejemplo, no los
-de ninguna persona.
+Screenshots of the public website. The demo uses its own sample data, not
+anyone's.
 
 | | |
 |---|---|
-| ![La demo de la web](docs/capturas/web-demo-es.png) | ![Qué hace Torbyn](docs/capturas/web-features-es.png) |
-| La demo de la web, con datos de ejemplo | Qué hace Torbyn |
-| ![El plan](docs/capturas/web-planes-es.png) | ![La descarga](docs/capturas/web-descargar-es.png) |
-| El plan | La descarga |
+| ![The website demo](docs/capturas/web-demo-en.png) | ![What Torbyn does](docs/capturas/web-features-en.png) |
+| The website demo, with sample data | What Torbyn does |
+| ![The plan](docs/capturas/web-planes-en.png) | ![The download](docs/capturas/web-descargar-en.png) |
+| The plan | The download |
 
-Más capturas, también en inglés, en [`docs/capturas/`](docs/capturas/).
+More screenshots, in Spanish too, in [`docs/capturas/`](docs/capturas/).
 
-## Privacidad por diseño
+## Privacy by design
 
-- **Tu código, tu contexto y tus claves no salen de tu equipo hacia ningún
-  servidor de Torbyn.** La app se conecta a Torbyn solo para tu cuenta
-  (entrar, crear la cuenta, ver tus sesiones, salir y borrar la cuenta) y
-  para buscar actualizaciones. Cada herramienta habla con su propio servicio,
-  según sus condiciones.
-- **No lee tus terminales.** Lo que pasa en una terminal va de la herramienta
-  a la ventana sin que Torbyn lo lea, lo guarde ni lo envíe. Hay una
-  excepción: la posición del cursor (dos números, nunca el texto), para saber
-  cuándo quitar el aviso «Abriendo…».
-- **No captura nada por su cuenta.** El contexto lo escribes tú.
-- **Sin telemetría.** La app no lleva analítica ni informes de fallos, y la
-  web no carga ninguna librería de analítica.
-- **No guarda tus claves de las herramientas.** Cada una inicia sesión en su
-  propia terminal. De Torbyn guarda tu sesión y tu correo, cifrados con la
-  protección de Windows, y nunca tu contraseña.
-- **Leer tu repositorio no ejecuta nada de él.** Para enseñarte los cambios,
-  Torbyn usa git en tu equipo. Lo hace sin ejecutar hooks, filtros ni otros
-  programas que el repositorio tenga configurados.
-- **Lo que anota se queda en tu equipo, y solo lo justo.** Por ejemplo, la
-  cuota de Claude Code o, cuando bloquea una edición, la hora, la herramienta,
-  la ruta, su dueño y la decisión.
-- **Actualizaciones firmadas.** Torbyn comprueba cada actualización antes de
-  instalarla. La rechaza si:
-  - el archivo no coincide;
-  - la firma no es la suya;
-  - viene de otro sitio;
-  - es una versión más vieja que la instalada.
-- **Puedes borrar tu cuenta** desde Ajustes, con tu contraseña. Se borran tu
-  cuenta y sus datos del servidor; tus proyectos no se tocan.
-  - Las copias de seguridad de la base de datos pueden conservar esos datos
-    durante un tiempo limitado, hasta que se renuevan.
-  - Lo que Torbyn guarda en tu equipo (tu sesión, la lista de proyectos y tus
-    ajustes) **no se borra al desinstalar**: se quita a mano, borrando la
-    carpeta de datos de Torbyn de tu perfil de Windows.
+- **Your code, your context and your keys don't leave your computer for any
+  Torbyn server.** The app connects to Torbyn only for your account (sign
+  in, create the account, see your sessions, sign out and delete the
+  account) and to check for updates. Each tool talks to its own service,
+  under its own terms.
+- **It doesn't read your terminals.** What happens in a terminal goes from
+  the tool to the window without Torbyn reading, storing or sending it. There
+  is one exception: the cursor position (two numbers, never the text), to
+  know when to remove the «Opening…» notice.
+- **It captures nothing on its own.** You write the context.
+- **No telemetry.** The app carries no analytics or crash reporting, and the
+  website loads no analytics library.
+- **It doesn't store your tools' keys.** Each one signs in in its own
+  terminal. For Torbyn it stores your session and your email, encrypted with
+  Windows' protection, and never your password.
+- **Reading your repository runs nothing from it.** To show you the changes,
+  Torbyn uses git on your computer, without running hooks, filters or other
+  programs the repository has configured.
+- **What it records stays on your computer, and only what's needed.** For
+  example, the Claude Code quota or, when it blocks an edit, the time, the
+  tool, the path, its owner and the decision.
+- **Signed updates.** Torbyn checks every update before installing it. It
+  rejects it if:
+  - the file doesn't match;
+  - the signature isn't its own;
+  - it comes from somewhere else;
+  - it's older than the installed version.
+- **You can delete your account** from Settings, with your password. Your
+  account and its data are deleted from the server; your projects are left
+  untouched.
+  - Database backups may keep that data for a limited time, until they are
+    rotated.
+  - What Torbyn stores on your computer (your session, your project list and
+    your settings) **is not deleted when you uninstall**: you remove it by
+    hand, by deleting Torbyn's data folder from your Windows profile.
 
-## Estado actual
+## Current status
 
-- **Versión:** 0.1.8, publicada el 6 de noviembre de 2026.
-- **Sistema:** solo Windows 10 y 11 de 64 bits.
-- **Firma:** el instalador todavía no está firmado con un certificado de
-  editor, así que Windows SmartScreen avisa de que el editor es desconocido.
-  Junto a la descarga está su SHA-256, para comprobar el archivo.
-- **Modos:** está disponible **Code**, el espacio de trabajo con los agentes;
-  **Agent** y **Chat** están marcados como «Próximamente».
-- **Precio:** un solo plan de 30 $ al mes, sin IA incluida. Todavía no se
-  puede contratar.
-- **Lo que no hace:**
-  - no impide lo que un agente cambia con comandos de terminal (Bash);
-  - con las demás herramientas, las rutas son una instrucción, no un bloqueo;
-  - no junta el trabajo de los agentes: eso lo haces tú, con git.
+- **Version:** 0.1.8, released on 6 November 2026.
+- **System:** 64-bit Windows 10 and 11 only.
+- **Signing:** the installer isn't signed with a publisher certificate yet,
+  so Windows SmartScreen warns that the publisher is unknown. Its SHA-256 is
+  next to the download, so you can check the file.
+- **Modes:** **Code**, the workspace with the agents, is available; **Agent**
+  and **Chat** are marked «Coming soon».
+- **Price:** a single plan at $30 a month, with no AI included. It can't be
+  bought yet.
+- **What it doesn't do:**
+  - it doesn't stop what an agent changes with terminal commands (Bash);
+  - with the other tools, paths are an instruction, not a block;
+  - it doesn't put the agents' work together: you do that, with git.
 
-## Hoja de ruta
+## Roadmap
 
-Es una dirección, no un compromiso de fechas.
+A direction, not a commitment to dates.
 
-- **Más herramientas.** En la web figuran como «Próximamente»: Cursor Agent,
-  GitHub Copilot, Grok Build, Kimi Code, Amp, Antigravity y Aider.
-- **Modo Agent:** varios agentes coordinados entre sí.
-- **Modo Chat:** conversar con tu herramienta sin abrir una terminal.
-- **Firma de código** del instalador.
-- **La capa de confianza:** las garantías alrededor de un equipo de agentes.
-  Puntos de restauración, revisión y fusión, verificación y seguir en otra
-  herramienta. Hoy existen las rutas asignadas. Resumen en
+- **More tools.** Listed on the website as «Coming soon»: Cursor Agent,
+  GitHub Copilot, Grok Build, Kimi Code, Amp, Antigravity and Aider.
+- **Agent mode:** several agents coordinated with each other.
+- **Chat mode:** talk to your tool without opening a terminal.
+- **Code signing** for the installer.
+- **The trust layer:** guarantees around a team of agents. Restore points,
+  review and merge, verification and continuing in another tool. Today,
+  assigned paths exist. Summary (in Spanish) in
   [`docs/capa-de-confianza.md`](docs/capa-de-confianza.md).
 
-## Enlaces
+## Links
 
-- Web: <https://torbyn-dashboard.vercel.app> (en inglés:
-  <https://torbyn-dashboard.vercel.app/en>)
-- Descarga para Windows: <https://github.com/diegoai-dev/torbyn-releases/releases/latest/download/Torbyn-Setup.exe>
-- Versiones publicadas: <https://github.com/diegoai-dev/torbyn-releases/releases>
+- Website: <https://torbyn-dashboard.vercel.app/en>
+- Download for Windows: <https://github.com/diegoai-dev/torbyn-releases/releases/latest/download/Torbyn-Setup.exe>
+- Published versions: <https://github.com/diegoai-dev/torbyn-releases/releases>
 
-## Quién está detrás
+## Who's behind it
 
-Torbyn lo hace Diego Gómez, su fundador, desde Panamá
-([LinkedIn](https://www.linkedin.com/in/diego-g%C3%B3mez-19b1b9324/)). Es
-el fundador y único desarrollador de Torbyn desde agosto de 2026.
+Torbyn is made by Diego Gómez, its founder, from Panama
+([LinkedIn](https://www.linkedin.com/in/diego-g%C3%B3mez-19b1b9324/)). Founder
+and sole developer of Torbyn since August 2026.
 
-Por ahora, el canal de contacto es abrir un *issue* en este repositorio.
+For now, the contact channel is opening an *issue* in this repository.
 
-## Licencia
+## License
 
-Todos los derechos reservados. Ver [LICENSE](LICENSE).
+All rights reserved. See [LICENSE](LICENSE).
 
-Los nombres y logotipos de las herramientas pertenecen a sus titulares.
-Torbyn no está afiliado a ninguno.
+Tool names and logos belong to their owners. Torbyn is not affiliated with
+any of them.

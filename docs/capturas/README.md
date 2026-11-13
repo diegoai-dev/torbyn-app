@@ -15,3 +15,19 @@ interactive demo uses the website's own sample data, not anyone's.
 | `web-features-es.png` · `web-features-en.png` | Qué hace Torbyn · What Torbyn does |
 | `web-planes-es.png` · `web-planes-en.png` | El plan · The plan |
 | `web-descargar-es.png` · `web-descargar-en.png` | La descarga · The download |
+
+Capturas de la app de escritorio con datos de ejemplo: un proyecto de prueba
+creado solo para ellas («tienda online» / «online store») y una cuenta
+`demo@example.com`. Las terminales ejecutan un programa de prueba en lugar de
+las herramientas de verdad, y lo dicen en pantalla.
+
+Screenshots of the desktop app with sample data: a test project made only for
+them and a `demo@example.com` account. The terminals run a stand-in program
+instead of the real tools, and say so on screen.
+
+| Archivo · File | Qué muestra · What it shows |
+|---|---|
+| `app-lanzador-es.png` · `app-lanzador-en.png` | El lanzador · The launcher |
+| `app-equipo-es.png` · `app-equipo-en.png` | Un equipo de cuatro agentes · A team of four agents |
+| `app-contexto-y-rutas-es.png` · `app-contexto-y-rutas-en.png` | El contexto y las rutas asignadas · The context and assigned paths |
+| `app-cambios-es.png` · `app-cambios-en.png` | Los cambios de un agente · One agent's changes |

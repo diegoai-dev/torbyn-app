@@ -109,6 +109,20 @@ anyone's.
 | ![The plan](docs/capturas/web-planes-en.png) | ![The download](docs/capturas/web-descargar-en.png) |
 | The plan | The download |
 
+### The app
+
+Screenshots of the desktop app with sample data: a test project (an online
+store) made only for these screenshots. The terminals run a stand-in program
+instead of the real tools, and say so on screen; in the app, each tool runs
+there with your own account.
+
+| | |
+|---|---|
+| ![The launcher](docs/capturas/app-lanzador-en.png) | ![The team](docs/capturas/app-equipo-en.png) |
+| The launcher: each agent with its tool, its model and where it works | A team of four agents, each in its own terminal |
+| ![Context and paths](docs/capturas/app-contexto-y-rutas-en.png) | ![Changes](docs/capturas/app-cambios-en.png) |
+| The project context, and `payments/` being assigned to the "payments" agent | What one agent changed, file by file |
+
 More screenshots, in Spanish too, in [`docs/capturas/`](docs/capturas/).
 
 ## Privacy by design

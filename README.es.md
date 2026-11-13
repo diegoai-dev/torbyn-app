@@ -109,6 +109,20 @@ de ninguna persona.
 | ![El plan](docs/capturas/web-planes-es.png) | ![La descarga](docs/capturas/web-descargar-es.png) |
 | El plan | La descarga |
 
+### La app
+
+Capturas de la app de escritorio con datos de ejemplo: un proyecto de prueba
+(una tienda online) creado solo para estas capturas. Las terminales ejecutan un
+programa de prueba en lugar de las herramientas de verdad, y lo dicen en
+pantalla; en la app, ahí corre cada herramienta con tu propia cuenta.
+
+| | |
+|---|---|
+| ![El lanzador](docs/capturas/app-lanzador-es.png) | ![El equipo](docs/capturas/app-equipo-es.png) |
+| El lanzador: cada agente con su herramienta, su modelo y dónde trabaja | Un equipo de cuatro agentes, cada uno en su terminal |
+| ![Contexto y rutas](docs/capturas/app-contexto-y-rutas-es.png) | ![Cambios](docs/capturas/app-cambios-es.png) |
+| El contexto del proyecto, y `pagos/` asignándose al agente «pagos» | Lo que cambió un agente, archivo por archivo |
+
 Más capturas, también en inglés, en [`docs/capturas/`](docs/capturas/).
 
 ## Privacidad por diseño

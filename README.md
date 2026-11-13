@@ -1,6 +1,8 @@
 # Torbyn
 
-**Write the context once. Every agent gets it.**
+**The trust layer for your AI workspace.**
+
+*Write the context once. Every agent gets it.*
 
 [Versión en español](README.es.md) · [Website](https://torbyn-dashboard.vercel.app/en) · [Download for Windows](https://github.com/diegoai-dev/torbyn-releases/releases/latest/download/Torbyn-Setup.exe)
 

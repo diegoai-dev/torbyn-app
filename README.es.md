@@ -1,6 +1,8 @@
 # Torbyn
 
-**Escribe el contexto una vez. Todos tus agentes lo reciben.**
+**La capa de confianza para tu espacio de trabajo de IA.**
+
+*Escribe el contexto una vez. Todos tus agentes lo reciben.*
 
 [English version](README.md) · [Web](https://torbyn-dashboard.vercel.app) · [Descargar para Windows](https://github.com/diegoai-dev/torbyn-releases/releases/latest/download/Torbyn-Setup.exe)
 

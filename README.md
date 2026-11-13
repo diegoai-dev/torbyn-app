@@ -4,7 +4,7 @@
 
 *Write the context once. Every agent gets it.*
 
-[Versión en español](README.es.md) · [Website](https://torbyn-dashboard.vercel.app/en) · [Download for Windows](https://github.com/diegoai-dev/torbyn-releases/releases/latest/download/Torbyn-Setup.exe)
+[Versión en español](README.es.md) · [Website](https://torbyn.com/en) · [Download for Windows](https://github.com/diegoai-dev/torbyn-releases/releases/latest/download/Torbyn-Setup.exe)
 
 ![The Torbyn website](docs/capturas/web-inicio-en.png)
 
@@ -197,7 +197,7 @@ A direction, not a commitment to dates.
 
 ## Links
 
-- Website: <https://torbyn-dashboard.vercel.app/en>
+- Website: <https://torbyn.com/en>
 - Download for Windows: <https://github.com/diegoai-dev/torbyn-releases/releases/latest/download/Torbyn-Setup.exe>
 - Published versions: <https://github.com/diegoai-dev/torbyn-releases/releases>
 

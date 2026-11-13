@@ -1,6 +1,6 @@
 # Capturas · Screenshots
 
-Capturas de la web pública de Torbyn (<https://torbyn-dashboard.vercel.app>),
+Capturas de la web pública de Torbyn (<https://torbyn.com>),
 a 1440 × 900, sin sesión iniciada. La demo interactiva usa los datos de
 ejemplo de la propia web (la cuenta `torbyn@example.com`, el proyecto «tienda
 online»), no los de ninguna persona.

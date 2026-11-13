@@ -4,7 +4,7 @@
 
 *Escribe el contexto una vez. Todos tus agentes lo reciben.*
 
-[English version](README.md) · [Web](https://torbyn-dashboard.vercel.app) · [Descargar para Windows](https://github.com/diegoai-dev/torbyn-releases/releases/latest/download/Torbyn-Setup.exe)
+[English version](README.md) · [Web](https://torbyn.com) · [Descargar para Windows](https://github.com/diegoai-dev/torbyn-releases/releases/latest/download/Torbyn-Setup.exe)
 
 ![La web de Torbyn](docs/capturas/web-inicio-es.png)
 
@@ -196,8 +196,8 @@ Es una dirección, no un compromiso de fechas.
 
 ## Enlaces
 
-- Web: <https://torbyn-dashboard.vercel.app> (en inglés:
-  <https://torbyn-dashboard.vercel.app/en>)
+- Web: <https://torbyn.com> (en inglés:
+  <https://torbyn.com/en>)
 - Descarga para Windows: <https://github.com/diegoai-dev/torbyn-releases/releases/latest/download/Torbyn-Setup.exe>
 - Versiones publicadas: <https://github.com/diegoai-dev/torbyn-releases/releases>
 

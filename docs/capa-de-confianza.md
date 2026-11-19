@@ -122,6 +122,15 @@ nota, se le dice dónde está y la lee él.
     hace falta Git para Windows.
   - Con las demás herramientas es una instrucción, y Torbyn avisa si se
     salieron cuando cada agente trabaja en su propia carpeta con git.
+- **El contrato de trabajo.** Cada proyecto tiene tres listas: las rutas
+  reservadas a un agente, las de solo lectura (las que la persona se asigna a
+  sí misma) y, si se quiere, las rutas en las que un agente puede escribir.
+  - Claude Code lo cumple con el mismo bloqueo de las rutas asignadas.
+  - Las demás herramientas lo reciben como instrucción.
+  - Torbyn lo comprueba con git contra el commit que tenía la carpeta del
+    agente al lanzarlo, y cada celda dice «Contrato: cumple», los
+    incumplimientos o «Contrato: sin comprobar» con el motivo. En una carpeta
+    compartida dice siempre «sin comprobar»: ahí no se sabe quién cambió qué.
 - **Una carpeta por agente.** Cada agente elige dónde trabaja; con un
   repositorio con commits, cada uno en su propio worktree y su propia rama.
 - **Cambios por agente.** Lo que cambió cada uno, archivo por archivo, leído

@@ -4,7 +4,7 @@
 
 *Write the context once. Every agent gets it.*
 
-[Versión en español](README.es.md) · [Website](https://torbyn.com/en) · [Request early access](https://torbyn.com/en/acceso-anticipado)
+[Español](README.es.md) · [Website](https://torbyn.com/en) · [Request early access](https://torbyn.com/en/acceso-anticipado)
 
 ![Four agents in Torbyn: Claude Code blocked an edit in another agent's path, and every cell shows its contract](docs/capturas/app-rutas-y-contrato-en.png)
 
@@ -62,11 +62,11 @@ flowchart LR
    write it; Torbyn doesn't summarise or change it, and it captures nothing
    on its own.
 3. **You launch the team.** You pick which tools and how many agents of each.
-   Each agent chooses where it works:
-   - in the project folder;
-   - in its own worktree, on its own branch;
-   - in a new folder;
-   - in an existing folder.
+   Each agent chooses where it works, in the launcher:
+   - “Project folder”;
+   - “Own worktree”, on its own branch;
+   - “New folder”;
+   - “Existing folder…”.
 
    With a repository that already has commits, the first agent uses the
    project folder and the rest get a worktree each, so they don't overwrite
@@ -79,20 +79,21 @@ flowchart LR
    - Gemini CLI, in `GEMINI.md`.
 
    With Claude Code it was measured that it uses the delivered context, and
-   its cell says **«Measured»**. With the others the context is delivered but
-   not measured, and the cell says **«Delivered · not measured»**. If you
+   its cell says **“Measured”**. With the others the context is delivered but
+   not measured, and the cell says **“Delivered · not measured”**. If you
    change the context, you deliver it to all of them with one click.
-5. **You assign paths.** For example, `src/payments/` only for the payments
-   agent, or a path only for you.
+5. **You assign paths**, in the launcher (“Reserved paths”) or later in the
+   context drawer (“Assigned paths”). For example, `src/payments/` only for
+   the payments agent, or a path only for you.
    - With Claude Code, Torbyn stops an agent from editing what belongs to
      another, also if the path was assigned after it opened. Stopping it in
      Claude Code needs Git for Windows.
    - With the other tools, Torbyn tells them and warns you if they step out.
 6. **Each agent has a work contract.** Three lists: the paths reserved for
    an agent, the read-only ones (assigned to you), and, if you want, the
-   paths an agent is allowed to write in. Each cell says whether the agent
-   kept to it: **«Contract: met»**, the breaches, or **«Contract: not
-   checked»** with the reason. Torbyn checks it with git against the commit
+   paths an agent is allowed to write in (“Allowed paths”). Each cell says
+   whether the agent kept to it: **“Contract: met”**, **“Contract: 1
+   breach”** (or more), or **“Contract: not checked”** with the reason. Torbyn checks it with git against the commit
    the agent's folder had when it was launched.
 7. **You review the changes** of each agent, file by file. Putting several
    agents' work together is up to you, with git.
@@ -109,17 +110,17 @@ screen; in the app, each tool runs there with your own account.
 
 | | |
 |---|---|
-| ![The welcome screen: the Torbyn logo, “Write the context once. Every agent gets it.”, and the Sign in and Create account buttons](docs/capturas/app-bienvenida-en.png) | ![The launcher: four agents, each with its tool, its model, its reserved and allowed paths and where it works; src/payments/ is reserved for “payments”](docs/capturas/app-lanzador-en.png) |
+| ![The welcome screen: the Torbyn logo, “Write the context once. Every agent gets it.”, and the “Sign in” and “Create account” buttons](docs/capturas/app-bienvenida-en.png) | ![The launcher: four agents, each with its tool, its model, its reserved and allowed paths and where it works; src/payments/ is in “Reserved paths” for “payments”](docs/capturas/app-lanzador-en.png) |
 | The welcome screen | The launcher: each agent with its tool, its model, its paths and where it works |
-| ![A team of four agents in a grid: two Claude Code marked “Measured”, Codex and Gemini CLI marked “Delivered · not measured”, all with “Contract: met”](docs/capturas/app-equipo-en.png) | ![The context drawer: the project context, the Team switch, and src/payments/ assigned to “payments”, with what it covers and what it doesn't](docs/capturas/app-contexto-y-rutas-en.png) |
+| ![A team of four agents in a grid: two Claude Code marked “Measured”, Codex and Gemini CLI marked “Delivered · not measured”, all with “Contract: met”](docs/capturas/app-equipo-en.png) | ![The context drawer: the project context, the “Team” switch, and src/payments/ in “Assigned paths” for “payments”, with what it covers and what it doesn't](docs/capturas/app-contexto-y-rutas-en.png) |
 | A team of four agents, each in its own terminal | The project context and the assigned paths |
-| ![The “web” agent's changes: one modified file and one new file, compared with the commit its folder had when it was launched](docs/capturas/app-cambios-en.png) | ![Settings, Terminal page: text size, font, scrollback, cursor style and blink](docs/capturas/app-ajustes-en.png) |
-| What one agent changed, file by file | Settings |
+| ![The “web” agent's changes: one modified file and one new file, compared with the commit its folder had when it was launched](docs/capturas/app-cambios-en.png) | ![“Settings”, “Terminal” page: “Text size”, “Font”, “Scrollback”, “Cursor style” and “Cursor blink”](docs/capturas/app-ajustes-en.png) |
+| What one agent changed, file by file | “Settings” |
 
 The screenshot at the top shows the same team after the “web” agent, a
 Claude Code, tried to edit `src/payments/charge.ts`, which belongs to
-“payments”: Torbyn blocked it. More screenshots, in Spanish too, in
-[`docs/capturas/`](docs/capturas/).
+“payments”: Torbyn blocked it. More screenshots in
+[`docs/capturas/`](docs/capturas/README.md).
 
 ## What it doesn't do
 
@@ -145,7 +146,7 @@ Claude Code, tried to edit `src/payments/charge.ts`, which belongs to
 - **It doesn't read your terminals.** What happens in a terminal goes from
   the tool to the window without Torbyn reading, storing or sending it. There
   is one exception: the cursor position (two numbers, never the text), to
-  know when to remove the «Opening…» notice.
+  know when to remove the “Opening…” notice.
 - **It captures nothing on its own.** You write the context.
 - **No telemetry.** The app carries no analytics or crash reporting, and the
   website loads no analytics library.
@@ -158,7 +159,7 @@ Claude Code, tried to edit `src/payments/charge.ts`, which belongs to
 - **What it records stays on your computer, and only what's needed.** For
   example, the Claude Code quota or, when it blocks an edit, the time, the
   tool, the path, its owner and the decision.
-- **You can delete your account** from Settings, confirming with your
+- **You can delete your account** from “Settings”, confirming with your
   password (or, if you signed in with GitHub, Google or Facebook, with that
   provider). Your account and its data are deleted from the server; your
   projects are left untouched.
@@ -174,7 +175,7 @@ Claude Code, tried to edit `src/payments/charge.ts`, which belongs to
   Torbyn's public releases, matches the SHA-512 published with it and carries
   a valid Ed25519 signature from a key the app ships with. It never installs
   an older version.
-- **Two ways in.** When only the app's code changes, «Restart to update»
+- **Two ways in.** When only the app's code changes, “Restart to update”
   swaps it in a few seconds and watches that the new version starts; if it
   doesn't, it goes back to the previous one. Anything else goes through the
   full installer. Without pressing the button, the update installs when you
@@ -191,7 +192,7 @@ Claude Code, tried to edit `src/payments/charge.ts`, which belongs to
   installer, at <https://torbyn.com/en/acceso-anticipado>.
 - **Account:** with email and password, or with GitHub, Google or Facebook.
 - **Modes:** **Code**, the workspace with the agents, is available; **Agent**
-  and **Chat** are marked «Coming soon».
+  and **Chat** are marked “Coming soon”.
 - **Price:** a single plan at $30 a month, with no AI included. It can't be
   bought yet: you'll be able to when the download opens.
 
@@ -199,15 +200,15 @@ Claude Code, tried to edit `src/payments/charge.ts`, which belongs to
 
 A direction, not a commitment to dates.
 
-- **More tools.** Listed on the website as «Coming soon»: Cursor Agent,
+- **More tools.** Listed on the website as “Coming soon”: Cursor Agent,
   GitHub Copilot, Grok Build, Kimi Code, Amp and Antigravity.
 - **Agent mode:** several agents coordinated with each other.
 - **Chat mode:** talk to your tool without opening a terminal.
 - **Code signing** for the installer.
 - **The trust layer:** guarantees around a team of agents. Restore points,
   review and merge, verification and continuing in another tool. Today,
-  assigned paths, the work contract and a folder per agent exist. Summary (in
-  Spanish) in [`docs/capa-de-confianza.md`](docs/capa-de-confianza.md).
+  assigned paths, the work contract and a folder per agent exist. Summary in
+  [`docs/capa-de-confianza.md`](docs/capa-de-confianza.md).
 
 ## Links
 

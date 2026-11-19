@@ -4,7 +4,7 @@
 
 *Escribe el contexto una vez. Todos tus agentes lo reciben.*
 
-[English version](README.md) · [Web](https://torbyn.com) · [Pide acceso anticipado](https://torbyn.com/acceso-anticipado)
+[English](README.md) · [Web](https://torbyn.com) · [Pide acceso anticipado](https://torbyn.com/acceso-anticipado)
 
 ![Cuatro agentes en Torbyn: Claude Code intentó editar una ruta de otro agente y quedó bloqueado, y cada celda enseña su contrato](docs/capturas/app-rutas-y-contrato-es.png)
 
@@ -63,11 +63,11 @@ flowchart LR
 2. **Escribes el contexto:** de qué va el proyecto y sus reglas. Lo escribes
    tú; Torbyn no lo resume ni lo cambia, y no captura nada por su cuenta.
 3. **Lanzas el equipo.** Eliges qué herramientas y cuántos agentes de cada
-   una. Cada agente elige dónde trabaja:
-   - en la carpeta del proyecto;
-   - en un worktree propio, con su rama;
-   - en una carpeta nueva;
-   - en una carpeta que ya existe.
+   una. Cada agente elige dónde trabaja, en el lanzador:
+   - «Carpeta del proyecto»;
+   - «Worktree propio», con su rama;
+   - «Carpeta nueva»;
+   - «Carpeta existente…».
 
    Con un repositorio que ya tiene commits, el primer agente usa la carpeta
    del proyecto y los demás un worktree cada uno, para no pisarse.
@@ -82,17 +82,19 @@ flowchart LR
    **«Medido»**. Con las demás el contexto está entregado, sin medir, y la
    celda dice **«Entregado · sin medir»**. Si cambias el contexto, lo
    entregas a todos con un clic.
-5. **Asignas rutas.** Por ejemplo, `src/pagos/` solo para el agente de pagos,
-   o una ruta solo para ti.
+5. **Asignas rutas**, en el lanzador («Rutas reservadas») o después en el
+   cajón del contexto («Rutas asignadas»). Por ejemplo, `src/pagos/` solo para
+   el agente de pagos, o una ruta solo para ti.
    - Con Claude Code, Torbyn impide que un agente edite lo que es de otro,
      también si la ruta se asignó después de abrirlo. Para impedirlo en
      Claude Code hace falta Git para Windows.
    - Con las demás herramientas, se lo indica y te avisa si se sale.
 6. **Cada agente tiene un contrato de trabajo.** Tres listas: las rutas
    reservadas a un agente, las de solo lectura (las que te asignas a ti) y,
-   si quieres, las rutas en las que un agente puede escribir. Cada celda dice
-   si el agente lo cumplió: **«Contrato: cumple»**, los incumplimientos, o
-   **«Contrato: sin comprobar»** con el motivo. Torbyn lo comprueba con git
+   si quieres, las rutas en las que un agente puede escribir («Rutas
+   permitidas»). Cada celda dice si el agente lo cumplió: **«Contrato:
+   cumple»**, **«Contrato: 1 incumplimiento»** (o más), o **«Contrato: sin
+   comprobar»** con el motivo. Torbyn lo comprueba con git
    contra el commit que tenía la carpeta del agente al lanzarlo.
 7. **Revisas los cambios** de cada agente, archivo por archivo. Juntar el
    trabajo de varios agentes lo haces tú, con git.
@@ -110,17 +112,17 @@ herramienta con tu propia cuenta.
 
 | | |
 |---|---|
-| ![La bienvenida: el logo de Torbyn, «Escribe el contexto una vez. Todos tus agentes lo reciben.» y los botones Iniciar sesión y Crear cuenta](docs/capturas/app-bienvenida-es.png) | ![El lanzador: cuatro agentes, cada uno con su herramienta, su modelo, sus rutas reservadas y permitidas y dónde trabaja; src/pagos/ está reservada para «pagos»](docs/capturas/app-lanzador-es.png) |
+| ![La bienvenida: el logo de Torbyn, «Escribe el contexto una vez. Todos tus agentes lo reciben.» y los botones «Iniciar sesión» y «Crear cuenta»](docs/capturas/app-bienvenida-es.png) | ![El lanzador: cuatro agentes, cada uno con su herramienta, su modelo, sus rutas reservadas y permitidas y dónde trabaja; src/pagos/ está en «Rutas reservadas» de «pagos»](docs/capturas/app-lanzador-es.png) |
 | La bienvenida | El lanzador: cada agente con su herramienta, su modelo, sus rutas y dónde trabaja |
-| ![Un equipo de cuatro agentes en una cuadrícula: dos Claude Code con «Medido», Codex y Gemini CLI con «Entregado · sin medir», todos con «Contrato: cumple»](docs/capturas/app-equipo-es.png) | ![El cajón del contexto: el contexto del proyecto, el interruptor Equipo y src/pagos/ asignada a «pagos», con qué cubre y qué no](docs/capturas/app-contexto-y-rutas-es.png) |
+| ![Un equipo de cuatro agentes en una cuadrícula: dos Claude Code con «Medido», Codex y Gemini CLI con «Entregado · sin medir», todos con «Contrato: cumple»](docs/capturas/app-equipo-es.png) | ![El cajón del contexto: el contexto del proyecto, el interruptor «Equipo» y src/pagos/ en «Rutas asignadas» de «pagos», con qué cubre y qué no](docs/capturas/app-contexto-y-rutas-es.png) |
 | Un equipo de cuatro agentes, cada uno en su terminal | El contexto del proyecto y las rutas asignadas |
-| ![Los cambios del agente «web»: un archivo modificado y uno nuevo, comparados con el commit que tenía su carpeta al lanzarlo](docs/capturas/app-cambios-es.png) | ![Ajustes, página Terminal: tamaño de letra, fuente, historial, estilo y parpadeo del cursor](docs/capturas/app-ajustes-es.png) |
-| Lo que cambió un agente, archivo por archivo | Ajustes |
+| ![Los cambios del agente «web»: un archivo modificado y uno nuevo, comparados con el commit que tenía su carpeta al lanzarlo](docs/capturas/app-cambios-es.png) | ![«Ajustes», página «Terminal»: «Tamaño de letra», «Fuente», «Historial», «Estilo del cursor» y «Parpadeo del cursor»](docs/capturas/app-ajustes-es.png) |
+| Lo que cambió un agente, archivo por archivo | «Ajustes» |
 
 La captura de arriba es el mismo equipo después de que el agente «web», un
 Claude Code, intentara editar `src/pagos/cobro.ts`, que es de «pagos»: Torbyn
-lo bloqueó. Más capturas, también en inglés, en
-[`docs/capturas/`](docs/capturas/).
+lo bloqueó. Más capturas en
+[`docs/capturas/`](docs/capturas/README.es.md).
 
 ## Lo que no hace
 
@@ -158,7 +160,7 @@ lo bloqueó. Más capturas, también en inglés, en
 - **Lo que anota se queda en tu equipo, y solo lo justo.** Por ejemplo, la
   cuota de Claude Code o, cuando bloquea una edición, la hora, la herramienta,
   la ruta, su dueño y la decisión.
-- **Puedes borrar tu cuenta** desde Ajustes, confirmando con tu contraseña
+- **Puedes borrar tu cuenta** desde «Ajustes», confirmando con tu contraseña
   (o, si entraste con GitHub, Google o Facebook, con ese proveedor). Se
   borran tu cuenta y sus datos del servidor; tus proyectos no se tocan.
   - Las copias de seguridad de la base de datos pueden conservar esos datos
@@ -207,11 +209,11 @@ Es una dirección, no un compromiso de fechas.
   Puntos de restauración, revisión y fusión, verificación y seguir en otra
   herramienta. Hoy existen las rutas asignadas, el contrato de trabajo y una
   carpeta por agente. Resumen en
-  [`docs/capa-de-confianza.md`](docs/capa-de-confianza.md).
+  [`docs/capa-de-confianza.es.md`](docs/capa-de-confianza.es.md).
 
 ## Enlaces
 
-- Web: <https://torbyn.com> (en inglés: <https://torbyn.com/en>)
+- Web: <https://torbyn.com>
 - Acceso anticipado: <https://torbyn.com/acceso-anticipado>
 - Contacto: <hello@torbyn.com>
 
@@ -222,7 +224,7 @@ desarrollador de Torbyn desde agosto de 2026.
 
 ## Licencia
 
-Todos los derechos reservados. Ver [LICENSE](LICENSE).
+Todos los derechos reservados. Ver [LICENSE.es](LICENSE.es).
 
 Claude Code, Codex, Gemini CLI, OpenCode, Droid, Cursor, GitHub Copilot, Grok
 Build, Kimi Code, Amp y Antigravity son marcas de sus respectivos

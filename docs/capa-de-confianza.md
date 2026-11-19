@@ -1,142 +1,144 @@
-# La capa de confianza
+# The trust layer
 
-Resumen propio de la dirección de Torbyn para equipos de agentes de código.
-Es un diseño: casi todo lo que describe **no está construido**. Al final se
-dice qué existe hoy.
+[Español](capa-de-confianza.es.md)
 
-## El problema
+Torbyn's own summary of its direction for teams of coding agents. It is a
+design: almost everything it describes **is not built**. The end says what
+exists today.
 
-Varios agentes de código trabajando a la vez sobre un mismo proyecto lo hacen
-sin garantías:
+## The problem
 
-1. **Se pisan.** Dos agentes editan el mismo archivo y gana el último que
-   escribe. Nadie se entera hasta que algo deja de funcionar.
-2. **No se sabe quién hizo qué.** En una carpeta compartida, git ve cambios,
-   no autores.
-3. **Deshacer es trabajo a mano.** Si un agente rompe algo, volver atrás sin
-   perder lo de los demás exige saber git, y lo que no estaba guardado en un
-   commit se pierde.
-4. **Juntar el trabajo es a ciegas.** Con una rama por agente, unir tres ramas
-   sigue siendo la tarea manual de siempre.
-5. **«Terminado» no significa «funciona».** El agente dice que acabó; nadie
-   corrió las pruebas.
-6. **Cuando una herramienta se agota, el trabajo queda a medias.** Seguir en
-   otra exige explicarle todo otra vez.
+Several coding agents working at the same time on one project do so without
+guarantees:
 
-## La idea
+1. **They overwrite each other.** Two agents edit the same file and the last
+   one to write wins. Nobody notices until something stops working.
+2. **Nobody knows who did what.** In a shared folder, git sees changes, not
+   authors.
+3. **Undoing is manual work.** If an agent breaks something, going back
+   without losing the others' work requires knowing git, and whatever wasn't
+   saved in a commit is lost.
+4. **Putting the work together is done blind.** With one branch per agent,
+   joining three branches is still the same old manual task.
+5. **“Done” doesn't mean “works”.** The agent says it finished; nobody ran
+   the tests.
+6. **When a tool runs out, the work is left half done.** Continuing in
+   another one means explaining everything again.
 
-Torbyn no compite con los agentes ni los dirige. Pone **las garantías
-alrededor**:
+## The idea
 
-- quién puede tocar qué;
-- cómo volver atrás;
-- qué se junta;
-- qué está verificado;
-- cómo se sigue cuando una herramienta se cae.
+Torbyn doesn't compete with the agents or direct them. It puts **the
+guarantees around them**:
 
-La persona sigue mandando: cada garantía la activa, la configura o la ejecuta
-ella.
+- who can touch what;
+- how to go back;
+- what gets put together;
+- what is verified;
+- how to continue when a tool goes down.
 
-## Las reglas que no cambian
+The person stays in charge: they turn on, set up or run each guarantee.
 
-- **Torbyn no lee lo que pasa en las terminales.** Sus señales salen de git,
-  de si un proceso sigue abierto y de su código de salida, nunca del texto de
-  una terminal.
-- **Decide la persona.** Nada se ejecuta por iniciativa de Torbyn ni de un
-  agente: deshacer, juntar, verificar o pasar el trabajo a otra herramienta son
-  clics suyos.
-- **Nada sale del equipo.** Todo es git local y archivos locales.
+## The rules that don't change
 
-## Los cinco pilares
+- **Torbyn doesn't read what happens in the terminals.** Its signals come
+  from git, from whether a process is still open and from its exit code,
+  never from a terminal's text.
+- **The person decides.** Nothing runs on Torbyn's or an agent's initiative:
+  undoing, putting work together, verifying or handing the work to another
+  tool are their clicks.
+- **Nothing leaves the computer.** Everything is local git and local files.
 
-### 1. Quién puede tocar qué
+## The five pillars
 
-Un formato abierto, en la carpeta `.torbyn/` del proyecto, para que la
-persona asigne rutas a cada agente y todas las herramientas lo lean.
+### 1. Who can touch what
 
-- Con las herramientas que permiten comprobar una edición antes de hacerla,
-  Torbyn la impide si la ruta es de otro.
-- Con las demás, la regla llega como instrucción, y Torbyn avisa después si
-  alguien se salió. Para eso cada agente tiene que trabajar en su propia
-  carpeta con git.
+An open format, in the project's `.torbyn/` folder, for the person to assign
+paths to each agent and for every tool to read.
 
-### 2. Puntos de restauración y deshacer
+- With the tools that allow checking an edit before it happens, Torbyn stops
+  it if the path belongs to another.
+- With the rest, the rule reaches them as an instruction, and Torbyn warns
+  afterwards if someone stepped out. For that, each agent has to work in its
+  own folder with git.
 
-Antes de abrir cada agente, un punto de restauración de su carpeta. Incluye lo
-que todavía no está en un commit y los archivos nuevos, y no toca nada de la
-persona: ni sus ramas ni su índice. Lo ignorado, como `.env` o
-`node_modules`, no entra.
+### 2. Restore points and undo
 
-- **Deshacer siempre deja otro punto antes**, así que deshacer también se
-  puede deshacer.
-- Con un agente en su propia carpeta, se deshace entero y de forma exacta.
-- En una carpeta compartida, se deshace archivo por archivo, y la persona
-  elige cuáles.
+Before each agent opens, a restore point of its folder. It includes what
+isn't in a commit yet and the new files, and it touches nothing of the
+person's: neither their branches nor their index. What is ignored, such as
+`.env` or `node_modules`, doesn't go in.
 
-### 3. Revisión y fusión
+- **Undoing always leaves another point first**, so undoing can be undone
+  too.
+- With an agent in its own folder, it is undone whole and exactly.
+- In a shared folder, it is undone file by file, and the person chooses
+  which ones.
 
-Una vista por proyecto con lo que cambió cada agente. Avisa de los choques
-**antes** de que pasen, mientras los agentes todavía trabajan («estos dos
-agentes chocarían en este archivo»), sin tocar ninguna carpeta.
+### 3. Review and merge
 
-Solo se ofrece juntar el trabajo de un agente si:
+One view per project with what each agent changed. It warns of clashes
+**before** they happen, while the agents are still working (“these two
+agents would clash in this file”), without touching any folder.
 
-- está en un commit;
-- está verificado;
-- no toca rutas de otro;
-- no choca.
+Putting an agent's work together is only offered if:
 
-Siempre hay un punto de restauración antes, y Torbyn **no resuelve choques
-por su cuenta**: dice qué archivos chocan y con quién.
+- it is in a commit;
+- it is verified;
+- it doesn't touch another's paths;
+- it doesn't clash.
 
-### 4. Verificación
+There is always a restore point first, and Torbyn **doesn't resolve clashes
+on its own**: it says which files clash and with whom.
 
-La persona fija los comandos que para su proyecto significan «terminado»: sus
-pruebas, el comprobador de tipos, el linter. Torbyn los corre en la carpeta
-del agente.
+### 4. Verification
 
-- **El veredicto es el código de salida**, nunca una lectura del texto.
-- **Va atado al estado exacto de los archivos.** Si algo cambió después, vuelve
-  a «sin verificar».
-- **Los comandos los fija solo la persona**, nunca el repositorio.
-- **Corren con un entorno mínimo** y con un tiempo máximo, sin más permisos
-  que la terminal del propio agente.
+The person sets the commands that mean “done” for their project: their
+tests, the type checker, the linter. Torbyn runs them in the agent's folder.
 
-### 5. Continuidad
+- **The verdict is the exit code**, never a reading of the text.
+- **It is tied to the exact state of the files.** If something changed
+  afterwards, it goes back to “not verified”.
+- **Only the person sets the commands**, never the repository.
+- **They run with a minimal environment** and a time limit, with no more
+  permissions than the agent's own terminal.
 
-«Continuar en…» pasa la tarea de un agente a otra herramienta, en la misma
-carpeta y la misma rama. Lo pulsa la persona, nunca es automático.
+### 5. Continuity
 
-El agente nuevo recibe **solo referencias**: qué rama, desde qué commit y qué
-mirar en git. Nunca texto escrito por otra IA. Si el agente anterior dejó una
-nota, se le dice dónde está y la lee él.
+“Continue in…” hands an agent's task to another tool, in the same folder and
+on the same branch. The person presses it; it is never automatic.
 
-## Qué existe hoy
+The new agent gets **only references**: which branch, from which commit and
+what to look at in git. Never text written by another AI. If the previous
+agent left a note, it is told where it is and reads it itself.
 
-**Construido:**
+## What exists today
 
-- **Rutas asignadas.** La persona asigna partes del proyecto a un agente o a
-  sí misma, en el lanzador o mientras trabajan.
-  - Con Claude Code, Torbyn impide que un agente edite o cree archivos en una
-    ruta de otro, también si la ruta se asignó después de abrirlo. Para eso
-    hace falta Git para Windows.
-  - Con las demás herramientas es una instrucción, y Torbyn avisa si se
-    salieron cuando cada agente trabaja en su propia carpeta con git.
-- **El contrato de trabajo.** Cada proyecto tiene tres listas: las rutas
-  reservadas a un agente, las de solo lectura (las que la persona se asigna a
-  sí misma) y, si se quiere, las rutas en las que un agente puede escribir.
-  - Claude Code lo cumple con el mismo bloqueo de las rutas asignadas.
-  - Las demás herramientas lo reciben como instrucción.
-  - Torbyn lo comprueba con git contra el commit que tenía la carpeta del
-    agente al lanzarlo, y cada celda dice «Contrato: cumple», los
-    incumplimientos o «Contrato: sin comprobar» con el motivo. En una carpeta
-    compartida dice siempre «sin comprobar»: ahí no se sabe quién cambió qué.
-- **Una carpeta por agente.** Cada agente elige dónde trabaja; con un
-  repositorio con commits, cada uno en su propio worktree y su propia rama.
-- **Cambios por agente.** Lo que cambió cada uno, archivo por archivo, leído
-  con git sin ejecutar nada del repositorio.
+**Built:**
 
-**No cubre:** lo que un agente cambia con comandos de terminal (Bash).
+- **Assigned paths.** The person assigns parts of the project to an agent or
+  to themselves, in the launcher or while they work.
+  - With Claude Code, Torbyn stops an agent from editing or creating files in
+    another's path, also if the path was assigned after it opened. That needs
+    Git for Windows.
+  - With the other tools it is an instruction, and Torbyn warns if they
+    stepped out when each agent works in its own folder with git.
+- **The work contract.** Each project has three lists: the paths reserved for
+  an agent, the read-only ones (those the person assigns to themselves) and,
+  if wanted, the paths an agent is allowed to write in.
+  - Claude Code keeps to it with the same block as the assigned paths.
+  - The other tools get it as an instruction.
+  - Torbyn checks it with git against the commit the agent's folder had when
+    it was launched, and each cell says “Contract: met”, “Contract: 1 breach”
+    (or more) or “Contract: not checked” with the reason. In a shared folder
+    it always says “Contract: not checked”: there, nobody knows who changed
+    what.
+- **A folder per agent.** Each agent chooses where it works; with a
+  repository with commits, each one in its own worktree and on its own
+  branch.
+- **Changes per agent.** What each one changed, file by file, read with git
+  without running anything from the repository.
 
-**Diseñado, sin construir:** los puntos de restauración, la revisión y fusión,
-la verificación y la continuidad.
+**Not covered:** what an agent changes with terminal commands (Bash).
+
+**Designed, not built:** restore points, review and merge, verification and
+continuity.

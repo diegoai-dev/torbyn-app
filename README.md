@@ -110,7 +110,7 @@ screen; in the app, each tool runs there with your own account.
 
 | | |
 |---|---|
-| ![The welcome screen: the Torbyn logo, “Write the context once. Every agent gets it.”, and the “Sign in” and “Create account” buttons](docs/capturas/app-bienvenida-en.png) | ![The launcher: four agents, each with its tool, its model, its reserved and allowed paths and where it works; src/payments/ is in “Reserved paths” for “payments”](docs/capturas/app-lanzador-en.png) |
+| ![The welcome screen: the Torbyn logo, “The trust layer for your AI workspace”, and the “Sign in” and “Create account” buttons](docs/capturas/app-bienvenida-en.png) | ![The launcher: four agents, each with its tool, its model, its reserved and allowed paths and where it works; src/payments/ is in “Reserved paths” for “payments”](docs/capturas/app-lanzador-en.png) |
 | The welcome screen | The launcher: each agent with its tool, its model, its paths and where it works |
 | ![A team of four agents in a grid: two Claude Code marked “Measured”, Codex and Gemini CLI marked “Delivered · not measured”, all with “Contract: met”](docs/capturas/app-equipo-en.png) | ![The context drawer: the project context, the “Team” switch, and src/payments/ in “Assigned paths” for “payments”, with what it covers and what it doesn't](docs/capturas/app-contexto-y-rutas-en.png) |
 | A team of four agents, each in its own terminal | The project context and the assigned paths |

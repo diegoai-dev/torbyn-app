@@ -112,7 +112,7 @@ herramienta con tu propia cuenta.
 
 | | |
 |---|---|
-| ![La bienvenida: el logo de Torbyn, «Escribe el contexto una vez. Todos tus agentes lo reciben.» y los botones «Iniciar sesión» y «Crear cuenta»](docs/capturas/app-bienvenida-es.png) | ![El lanzador: cuatro agentes, cada uno con su herramienta, su modelo, sus rutas reservadas y permitidas y dónde trabaja; src/pagos/ está en «Rutas reservadas» de «pagos»](docs/capturas/app-lanzador-es.png) |
+| ![La bienvenida: el logo de Torbyn, «La capa de confianza para tu espacio de trabajo de IA» y los botones «Iniciar sesión» y «Crear cuenta»](docs/capturas/app-bienvenida-es.png) | ![El lanzador: cuatro agentes, cada uno con su herramienta, su modelo, sus rutas reservadas y permitidas y dónde trabaja; src/pagos/ está en «Rutas reservadas» de «pagos»](docs/capturas/app-lanzador-es.png) |
 | La bienvenida | El lanzador: cada agente con su herramienta, su modelo, sus rutas y dónde trabaja |
 | ![Un equipo de cuatro agentes en una cuadrícula: dos Claude Code con «Medido», Codex y Gemini CLI con «Entregado · sin medir», todos con «Contrato: cumple»](docs/capturas/app-equipo-es.png) | ![El cajón del contexto: el contexto del proyecto, el interruptor «Equipo» y src/pagos/ en «Rutas asignadas» de «pagos», con qué cubre y qué no](docs/capturas/app-contexto-y-rutas-es.png) |
 | Un equipo de cuatro agentes, cada uno en su terminal | El contexto del proyecto y las rutas asignadas |
